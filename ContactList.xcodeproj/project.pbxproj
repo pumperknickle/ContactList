@@ -3,27 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2E2C2509241FE703001D8B86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C2508241FE703001D8B86 /* AppDelegate.swift */; };
 		2E2C250B241FE703001D8B86 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C250A241FE703001D8B86 /* SceneDelegate.swift */; };
-		2E2C250D241FE703001D8B86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C250C241FE703001D8B86 /* ContentView.swift */; };
+		2E2C250D241FE703001D8B86 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C250C241FE703001D8B86 /* ContactListView.swift */; };
 		2E2C250F241FE706001D8B86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C250E241FE706001D8B86 /* Assets.xcassets */; };
 		2E2C2512241FE706001D8B86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C2511241FE706001D8B86 /* Preview Assets.xcassets */; };
 		2E2C2515241FE706001D8B86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C2513241FE706001D8B86 /* LaunchScreen.storyboard */; };
+		2E6BBC5524215EE500838EE6 /* ContactAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC5424215EE500838EE6 /* ContactAPI.swift */; };
+		2E6BBC572421C74800838EE6 /* ContactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC562421C74800838EE6 /* ContactListViewModel.swift */; };
+		2E6BBC592422D69D00838EE6 /* EditContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC582422D69D00838EE6 /* EditContactView.swift */; };
+		2E6BBC5B2423B3AA00838EE6 /* PhoneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC5A2423B3AA00838EE6 /* PhoneRow.swift */; };
+		2E6BBC5D2423B9A200838EE6 /* PhoneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC5C2423B9A200838EE6 /* PhoneListView.swift */; };
+		2E6BBC5F2423BCBB00838EE6 /* PhoneListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC5E2423BCBB00838EE6 /* PhoneListModelView.swift */; };
+		2E6BBC612423CD6C00838EE6 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBC602423CD6C00838EE6 /* ContactDetailView.swift */; };
+		2E6BBDAB24242D4900838EE6 /* ContactDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBDAA24242D4900838EE6 /* ContactDetailViewModel.swift */; };
+		2E6BBDAD242464DC00838EE6 /* AddressRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBDAC242464DC00838EE6 /* AddressRow.swift */; };
+		2E6BBDAF24246A3900838EE6 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BBDAE24246A3900838EE6 /* DateRow.swift */; };
+		2ED34CBF242013C400D70A49 /* ContactListModels in Frameworks */ = {isa = PBXBuildFile; productRef = 2ED34CBE242013C400D70A49 /* ContactListModels */; };
+		2ED34CC124203E8300D70A49 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED34CC024203E8300D70A49 /* ContactRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E2C2505241FE703001D8B86 /* ContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E2C2508241FE703001D8B86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E2C250A241FE703001D8B86 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2E2C250C241FE703001D8B86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2E2C250C241FE703001D8B86 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		2E2C250E241FE706001D8B86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E2C2511241FE706001D8B86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E2C2514241FE706001D8B86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E2C2516241FE706001D8B86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E6BBC5424215EE500838EE6 /* ContactAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAPI.swift; sourceTree = "<group>"; };
+		2E6BBC562421C74800838EE6 /* ContactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewModel.swift; sourceTree = "<group>"; };
+		2E6BBC582422D69D00838EE6 /* EditContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactView.swift; sourceTree = "<group>"; };
+		2E6BBC5A2423B3AA00838EE6 /* PhoneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneRow.swift; sourceTree = "<group>"; };
+		2E6BBC5C2423B9A200838EE6 /* PhoneListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneListView.swift; sourceTree = "<group>"; };
+		2E6BBC5E2423BCBB00838EE6 /* PhoneListModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneListModelView.swift; sourceTree = "<group>"; };
+		2E6BBC602423CD6C00838EE6 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		2E6BBDAA24242D4900838EE6 /* ContactDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModel.swift; sourceTree = "<group>"; };
+		2E6BBDAC242464DC00838EE6 /* AddressRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRow.swift; sourceTree = "<group>"; };
+		2E6BBDAE24246A3900838EE6 /* DateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
+		2ED34CC024203E8300D70A49 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED34CBF242013C400D70A49 /* ContactListModels in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,11 +82,22 @@
 			children = (
 				2E2C2508241FE703001D8B86 /* AppDelegate.swift */,
 				2E2C250A241FE703001D8B86 /* SceneDelegate.swift */,
-				2E2C250C241FE703001D8B86 /* ContentView.swift */,
+				2E2C250C241FE703001D8B86 /* ContactListView.swift */,
 				2E2C250E241FE706001D8B86 /* Assets.xcassets */,
 				2E2C2513241FE706001D8B86 /* LaunchScreen.storyboard */,
 				2E2C2516241FE706001D8B86 /* Info.plist */,
 				2E2C2510241FE706001D8B86 /* Preview Content */,
+				2ED34CC024203E8300D70A49 /* ContactRow.swift */,
+				2E6BBC5424215EE500838EE6 /* ContactAPI.swift */,
+				2E6BBC562421C74800838EE6 /* ContactListViewModel.swift */,
+				2E6BBC5A2423B3AA00838EE6 /* PhoneRow.swift */,
+				2E6BBC5C2423B9A200838EE6 /* PhoneListView.swift */,
+				2E6BBC5E2423BCBB00838EE6 /* PhoneListModelView.swift */,
+				2E6BBC602423CD6C00838EE6 /* ContactDetailView.swift */,
+				2E6BBC582422D69D00838EE6 /* EditContactView.swift */,
+				2E6BBDAA24242D4900838EE6 /* ContactDetailViewModel.swift */,
+				2E6BBDAC242464DC00838EE6 /* AddressRow.swift */,
+				2E6BBDAE24246A3900838EE6 /* DateRow.swift */,
 			);
 			path = ContactList;
 			sourceTree = "<group>";
@@ -91,6 +126,9 @@
 			dependencies = (
 			);
 			name = ContactList;
+			packageProductDependencies = (
+				2ED34CBE242013C400D70A49 /* ContactListModels */,
+			);
 			productName = ContactList;
 			productReference = 2E2C2505241FE703001D8B86 /* ContactList.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +157,9 @@
 				Base,
 			);
 			mainGroup = 2E2C24FC241FE703001D8B86;
+			packageReferences = (
+				2ED34CBD242013C400D70A49 /* XCRemoteSwiftPackageReference "contactlistmodels" */,
+			);
 			productRefGroup = 2E2C2506241FE703001D8B86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -148,7 +189,18 @@
 			files = (
 				2E2C2509241FE703001D8B86 /* AppDelegate.swift in Sources */,
 				2E2C250B241FE703001D8B86 /* SceneDelegate.swift in Sources */,
-				2E2C250D241FE703001D8B86 /* ContentView.swift in Sources */,
+				2E6BBDAD242464DC00838EE6 /* AddressRow.swift in Sources */,
+				2E2C250D241FE703001D8B86 /* ContactListView.swift in Sources */,
+				2E6BBC5B2423B3AA00838EE6 /* PhoneRow.swift in Sources */,
+				2E6BBC592422D69D00838EE6 /* EditContactView.swift in Sources */,
+				2E6BBDAB24242D4900838EE6 /* ContactDetailViewModel.swift in Sources */,
+				2E6BBC5D2423B9A200838EE6 /* PhoneListView.swift in Sources */,
+				2E6BBC572421C74800838EE6 /* ContactListViewModel.swift in Sources */,
+				2E6BBC5524215EE500838EE6 /* ContactAPI.swift in Sources */,
+				2ED34CC124203E8300D70A49 /* ContactRow.swift in Sources */,
+				2E6BBC612423CD6C00838EE6 /* ContactDetailView.swift in Sources */,
+				2E6BBDAF24246A3900838EE6 /* DateRow.swift in Sources */,
+				2E6BBC5F2423BCBB00838EE6 /* PhoneListModelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +392,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2ED34CBD242013C400D70A49 /* XCRemoteSwiftPackageReference "contactlistmodels" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pumperknickle/contactlistmodels";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2ED34CBE242013C400D70A49 /* ContactListModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2ED34CBD242013C400D70A49 /* XCRemoteSwiftPackageReference "contactlistmodels" */;
+			productName = ContactListModels;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2E2C24FD241FE703001D8B86 /* Project object */;
 }
