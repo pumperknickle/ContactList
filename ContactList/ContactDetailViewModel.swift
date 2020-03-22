@@ -3,17 +3,20 @@ import Combine
 import ContactListModels
 
 public final class ContactDetailViewModel: ObservableObject {
-    @Published var phoneNumbers: [Phone] = [] {
-        didSet {
-            print(oldValue)
-        }
-    }
+    @Published var phoneNumbers: [Phone] = []
     @Published var addresses: [Address] = []
     @Published var dates: [ContactListModels.Date] = []
-    
+    @Published var contact: Contact
     var contactID: Contact.ID! {
+        return contact.id!
+    }
+    var phone: Phone? = nil
+    var address: Address? = nil
+    var date: ContactListModels.Date? = nil
+    
+    var contactCancellable: Cancellable? {
         didSet {
-            updateAll()
+            oldValue?.cancel()
         }
     }
     
@@ -35,32 +38,41 @@ public final class ContactDetailViewModel: ObservableObject {
         }
     }
     
+    public init(contact: Contact) {
+        self.contact = contact
+        self.updateAll()
+    }
+    
     deinit {
         phonesCancellable?.cancel()
         addressesCancellable?.cancel()
         datesCancellable?.cancel()
-    }
-    
-    public init(contactID: Contact.ID) {
-        self.contactID = contactID
+        contactCancellable?.cancel()
     }
     
     func updateAll() {
-        self.phonesCancellable = ContactAPI.getPhones(for: String(describing: contactID))
+        self.contactCancellable = ContactAPI.getContact(for: "\(contactID! ?? Int.max)")
+        .sink(receiveCompletion: { (error) in
+            print(error)
+            return
+        }, receiveValue: { (contact) in
+            self.contact = contact
+        })
+        self.phonesCancellable = ContactAPI.getPhones(for: "\(contactID! ?? Int.max)")
             .sink(receiveCompletion: { (error) in
                 print(error)
                 return
             }, receiveValue: { (phones) in
                 self.phoneNumbers = phones
             })
-        self.addressesCancellable = ContactAPI.getAddresses(for: String(describing: contactID))
+        self.addressesCancellable = ContactAPI.getAddresses(for: "\(contactID! ?? Int.max)")
             .sink(receiveCompletion: { (error) in
                 print(error)
                 return
             }, receiveValue: { (addresses) in
                 self.addresses = addresses
             })
-        self.datesCancellable = ContactAPI.getDates(for: String(describing: contactID))
+        self.datesCancellable = ContactAPI.getDates(for: "\(contactID! ?? Int.max)")
             .sink(receiveCompletion: { (error) in
                 print(error)
                 return

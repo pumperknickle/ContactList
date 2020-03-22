@@ -4,31 +4,49 @@ import ContactListModels
 
 struct ContactListView: View {
     @ObservedObject var viewModel: ContactListViewModel
-    @State private var show_modal: Bool = false
+    @State private var sheet: Sheet? = nil
+    
+    func onDeleteRow(indices: IndexSet) {
+        let contacts = indices.map { viewModel.contacts[$0] }
+        delete(contacts: contacts)
+    }
+    
+    func delete(contacts: [Contact]) {
+        guard let firstContact = contacts.first else { return }
+        ContactAPI.deleteContact(contact: firstContact) {
+            self.viewModel.getContacts()
+        }
+        delete(contacts: Array(contacts.dropFirst()))
+    }
 
     var body: some View {
         NavigationView {
             VStack {
                 SearchBar(text: $viewModel.query)
-                List(viewModel.contacts) { contact in
-                    NavigationLink(destination: ContactDetailView(contact: contact)) {
-                        ContactRow(contact: contact)
-                    }
+                List {
+                    ForEach (viewModel.contacts) { contact in
+                        NavigationLink(destination: ContactDetailView(contact: contact).onDisappear(perform: {
+                            self.viewModel.getContacts()
+                        })
+                        ) {
+                            ContactRow(contact: contact)
+                        }
+                    }.onDelete(perform: onDeleteRow)
                 }
                 .navigationBarTitle(Text("Contacts"))
             }.navigationBarItems(trailing:
                 Button(action: {
-                    self.show_modal.toggle()
+                    self.sheet = .CONTACT
                     }, label: {
                         Text("New")
                     })
             )
         }
-        .sheet(isPresented: self.$show_modal, onDismiss: {
+        .sheet(item: self.$sheet, onDismiss: {
             self.viewModel.getContacts()
         },
-        content: {
-            EditContactView(f_name: "", m_name: "", l_name: "")
+        content: { _ in
+            EditContactView(sheet: self.$sheet, f_name: "", m_name: "", l_name: "")
         })
     }
 }

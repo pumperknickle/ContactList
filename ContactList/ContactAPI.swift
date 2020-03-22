@@ -8,34 +8,15 @@ enum ContactAPI {
 }
 
 extension ContactAPI {
-//    static func saveContact(contact: Contact) -> AnyPublisher<Contact, Error> {
-//        if let contactID = contact.id {
-//            // update contact
-//            let suffix = "Contact/\(contactID)/"
-//            var request = URLRequest(url: base.appendingPathComponent(suffix))
-//            request.httpMethod = "PUT"
-//            request.httpBody = try? JSONEncoder().encode(contact)
-//            return run(request)
-//        }
-//        else {
-//            // new contact
-//            let suffix = "Contact/"
-//            var request = URLRequest(url: base.appendingPathComponent(suffix))
-//            request.httpMethod = "POST"
-//            request.httpBody = try? JSONEncoder().encode(contact)
-//            return run(request)
-//        }
-//        
-//    }
-    
     static func saveContact(contact: Contact, completion: @escaping (Contact) -> ()) {
         let isEdit = contact.id != nil
         let base = URL(string: "http://0.0.0.0:8080")!
-        let suffix = isEdit ? "Contact/\(contact.id!)/" : "Contact/"
+        let suffix = "Contact/"
         var request = URLRequest(url: base.appendingPathComponent(suffix))
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = isEdit ? "PUT" : "POST"
-        request.httpBody = try? JSONEncoder().encode(contact)
+        let contactToSave = isEdit ? contact : Contact(id: Int.random(in: 1000...Int.max), f_name: contact.f_name, m_name: contact.m_name, l_name: contact.l_name)
+        request.httpBody = try? JSONEncoder().encode(contactToSave)
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 print(error!)
@@ -48,8 +29,140 @@ extension ContactAPI {
         }.resume()
     }
     
+    static func savePhone(phone: Phone, completion: @escaping (Phone) -> ()) {
+        let isEdit = phone.id != nil
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Phone/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = isEdit ? "PUT" : "POST"
+        let phoneToSave = isEdit ? phone : Phone(id: Int.random(in: 1000...Int.max), contact_id: phone.contact_id, phone_type: phone.phone_type, area_code: phone.area_code, number: phone.number)
+        request.httpBody = try? JSONEncoder().encode(phoneToSave)
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(error!)
+                return
+            }
+            guard let savedPhone = try? JSONDecoder().decode(Phone.self, from: data) else {
+                return
+            }
+            completion(savedPhone)
+        }.resume()
+    }
+    
+    static func saveAddress(address: Address, completion: @escaping (Address) -> ()) {
+        let isEdit = address.id != nil
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Address/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = isEdit ? "PUT" : "POST"
+        let addressToSave = isEdit ? address : Address(id: Int.random(in: 1000...Int.max), contact_id: address.contact_id, address_type: address.address_type, address: address.address, city: address.city, state: address.state, zip: address.zip)
+        request.httpBody = try? JSONEncoder().encode(addressToSave)
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(error!)
+                return
+            }
+            guard let savedAddress = try? JSONDecoder().decode(Address.self, from: data) else {
+                return
+            }
+            completion(savedAddress)
+        }.resume()
+    }
+    
+    static func saveDate(date: ContactListModels.Date, completion: @escaping (ContactListModels.Date) -> ()) {
+        let isEdit = date.id != nil
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Date/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = isEdit ? "PUT" : "POST"
+        let dateToSave = isEdit ? date : ContactListModels.Date(id: Int.random(in: 1000...Int.max), contact_id: date.contact_id, date_type: date.date_type, calendar_date: date.calendar_date)
+        request.httpBody = try? JSONEncoder().encode(dateToSave)
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(error!)
+                return
+            }
+            guard let savedDate = try? JSONDecoder().decode(ContactListModels.Date.self, from: data) else {
+                return
+            }
+            completion(savedDate)
+        }.resume()
+    }
+    
+    static func deleteDate(date: ContactListModels.Date, completion: @escaping () -> ()) {
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Date/\(date.id!)/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let error = error else {
+                completion()
+                return
+            }
+            print(error)
+            return
+        }.resume()
+    }
+    
+    static func deletePhone(phone: Phone, completion: @escaping () -> ()) {
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Phone/\(phone.id!)/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let error = error else {
+                completion()
+                return
+            }
+            print(error)
+            return
+        }.resume()
+    }
+    
+    static func deleteAddress(address: Address, completion: @escaping () -> ()) {
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Address/\(address.id!)/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let error = error else {
+                completion()
+                return
+            }
+            print(error)
+            return
+        }.resume()
+    }
+    
+    static func deleteContact(contact: Contact, completion: @escaping () -> ()) {
+        let base = URL(string: "http://0.0.0.0:8080")!
+        let suffix = "Contact/\(contact.id!)/"
+        var request = URLRequest(url: base.appendingPathComponent(suffix))
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let error = error else {
+                completion()
+                return
+            }
+            print(error)
+            return
+        }.resume()
+    }
+    
     static func getAllContacts() -> AnyPublisher<[Contact], Error> {
         let request = URLRequest(url: base.appendingPathComponent("Contact/"))
+        return run(request)
+    }
+    
+    static func getContact(for contactID: String) -> AnyPublisher<Contact, Error> {
+        let request = URLRequest(url: base.appendingPathComponent("Contact/" + contactID))
         return run(request)
     }
     

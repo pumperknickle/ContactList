@@ -21,6 +21,6 @@ struct ContactRow_Previews: PreviewProvider {
 
 extension Contact {
     func fullName() -> String {
-        return "\(f_name!) \(m_name!) \(l_name!)"
+        return "\(f_name!) \(m_name ?? "") \(l_name!)"
     }
 }

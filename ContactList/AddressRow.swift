@@ -14,7 +14,10 @@ struct AddressRow: View {
 
 extension Address {
     func toString() -> String {
-        return "\(address_type.toString()): \(address) \(city), \(state) \(zip)"
+        if address == "" || city == "" || state == "" || address == nil || city == nil || state == nil {
+            return "Zip: \(zip!)"
+        }
+        return "\(address_type.toString()): \(address!) \(city!), \(state!) \(zip ?? "")"
     }
 }
 

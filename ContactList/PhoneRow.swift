@@ -33,6 +33,8 @@ extension PhoneType {
             return "Home"
         case .WORK:
             return "Work"
+        case .CELL:
+            return "Cell"
         default:
             return "Other"
         }

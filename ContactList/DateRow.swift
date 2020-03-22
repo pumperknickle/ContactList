@@ -12,13 +12,11 @@ struct DateRow: View {
     }
 }
 
-extension ContactListModels.Date: Identifiable { }
-
 extension ContactListModels.Date {
     func toString() -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return "\(date_type.toString()): \(formatter.string(from: calendar_date))"
+        formatter.dateFormat = "yyyy-MM-dd"
+        return "\(date_type.toString()): \(calendar_date)"
     }
 }
 
